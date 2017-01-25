@@ -23,4 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/management', 'EmployeeController@emloyeeManagement');
     Route::post('user/employee', 'EmployeeController@insert');
     Route::delete('role/{id}', 'RoleController@delete');
+    Route::post('official', 'OfficialController@insert');
+    Route::post('position', 'PositionController@insert');
+    Route::get('official/management', 'OfficialController@fetchManagement');
 });

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-
+        <h3 class="pull-right text-info">Employee Management</h3>
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Employee list <span class="badge">{{ employees.length }}</span></a></li>
