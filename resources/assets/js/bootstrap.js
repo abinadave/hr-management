@@ -24,6 +24,12 @@ require('vue-resource');
  * the outgoing requests issued by this application. The CSRF middleware
  * included with Laravel will automatically verify the header's value.
  */
+ 
+$(function () {
+    $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': Laravel.csrfToken }
+    });
+});
 
 Vue.http.interceptors.push((request, next) => {
     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);

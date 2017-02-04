@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
+    
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -46,6 +46,9 @@
                         &nbsp;
                         <li><router-link :to="{ name: 'emps' }">Employee</router-link></li>
                         <li><router-link :to="{ name: 'opisyal' }">Officials</router-link></li>
+                        <li><router-link :to="{ path: '/Blog/Management' }">Blog</router-link></li>
+                        <li><router-link :to="{ path: '/Mission' }">Mission</router-link></li>
+                        <li><router-link :to="{ path: '/Vision' }">Vision</router-link></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

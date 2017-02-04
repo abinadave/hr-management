@@ -32,7 +32,11 @@ const routes = [
 		path: '/Officials',
 		name: 'opisyal',
 		component: require('./components/official/official.vue')
-	}
+	},
+	{
+		path: '/Blog/Management',
+		component: require('./components/blog/blog.vue')
+	},
 ]
 
 window.router = new VueRouter({

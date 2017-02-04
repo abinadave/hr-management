@@ -12,6 +12,7 @@ return array(
     'CreateOfficialsTable' => $baseDir . '/database/migrations/2017_01_25_131456_create_officials_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePositionsTable' => $baseDir . '/database/migrations/2017_01_25_132643_create_positions_table.php',
+    'CreatePostsTable' => $baseDir . '/database/migrations/2017_02_04_121533_create_posts_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2017_01_21_163701_create_roles_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
