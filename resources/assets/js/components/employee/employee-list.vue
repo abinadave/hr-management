@@ -1,6 +1,11 @@
 <template>
     <div class="col-lg-12" style="margin-top: 20px">
      <input v-model="search" type="text" class="form-control" placeholder="search for employees" style="width: 220px; border-radius: 25px">
+        <select v-model="sortByActive" class="form-control pull-right" style="width: 200px; margin-top: -20px">
+            <option :value="2">All</option>
+            <option :value="1">Active</option>
+            <option :value="0">None- qActive</option>
+        </select>
         <table class="table table-hover table-condensed">
             <thead>
                 <tr>
@@ -9,7 +14,8 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Role</th>
-                    <th>Date of Joining</th>
+                    <th>From</th>
+                    <th>To</th>
                     <th>Status</th>
                     <th width="1"></th>
                 </tr>
@@ -22,6 +28,7 @@
                     <td>{{ person.address1 }}</td>
                     <td>{{ getRole(person.role) }}</td>
                     <td>{{ person.date_of_joining }}</td>
+                    <td>{{ person.date_of_leaving }}</td>
                     <td>{{ activeOrNot(person) }}</td>
                     <td><a @click="removePerson(person)"><i class="fa fa-remove"></i></a></td>
                 </tr>
@@ -47,7 +54,22 @@
         },
         data(){
             return {
-                search: ''
+                search: '',
+                sortByActive: 2,
+            }
+        },
+        watch: {
+            'sortByActive': function(newVal){
+                let self = this;
+                let resource = self.$resource('employee/sort/by/active{/id}');
+                resource.get({
+                    id: newVal
+                }).then((resp) => {
+                    if (resp.status === 200) {
+                       let json = resp.body;
+                       self.employees = json.employees;
+                    }
+                })
             }
         },
         computed: {

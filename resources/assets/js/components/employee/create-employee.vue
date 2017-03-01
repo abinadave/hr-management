@@ -34,11 +34,11 @@
                <input v-model="form.address2" type="text" class="form-control address2" />
             </label>&nbsp;&nbsp;&nbsp;
             <label>
-               Date of joining:
+               From:
                <input v-model="form.date_of_joining" type="date" class="form-control dates" />
             </label>&nbsp;&nbsp;&nbsp;
             <label>
-               Date of leaving:
+               To:
                <input v-model="form.date_of_leaving" type="date" class="form-control dates" />
             </label>&nbsp;&nbsp;&nbsp;
             <label>

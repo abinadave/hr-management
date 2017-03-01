@@ -6,13 +6,13 @@
                     <div class="panel-body">
                         <form name="yourformname">
                             <label>Blog Title
-                                <input type="text" class="form-control" placeholder="Title-here">
+                                <input v-model="form.title" type="text" class="form-control" placeholder="Title-here">
                             </label><hr>
                             <input  name="photo" type="file" multiple><button class="btn btn-xs btn-info" @click.prevent="uploadTemporaryFiles">Uploads</button>
                             <temporary-files></temporary-files>
                             <!-- <br> -->
                             <label>
-                                <textarea class="form-control" style="margin: 0px; width: 506px; height: 147px;">
+                                <textarea v-model="form.body" class="form-control" style="margin: 0px; width: 506px; height: 147px;">
                                     
                                 </textarea>
                             </label><br>
@@ -65,7 +65,9 @@
                     processData: false, // high importance!
                     success: function (data) {
                         //do thing with data....
-                        console.log(data)
+                        if (data.filename != '') {
+                            alert('success')
+                        }
                     },
                     timeout: 10000
                 });
@@ -75,15 +77,22 @@
                 console.log('fetching temporary files');
                 self.$http.get('/temporary/files/blog').then((resp) => {
                     if (resp.status === 200) {
-                        let json = resp.body;
-                        console.log(json)
+                        let blog_post = resp.body;
+                        console.log(blog_post)
                     }
                 })
             },
             saveBlogPost(){
                 let self = this;
                 self.$http.post('/post', self.form).then((resp) => {
-                    console.log(resp);
+                    if(resp.status === 200){
+                       let blog_post = resp.body;
+                       if (blog_post.id > 0) {
+                            alert('Blog has been posted.');
+                            self.form.title = '';
+                            self.form.body = '';
+                       }
+                    }
                 }, (resp) => {
                     console.log(resp);
                 })

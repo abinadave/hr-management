@@ -9,6 +9,19 @@ use App\Employee as Employee;
 
 class EmployeeController extends Controller
 {
+    public function fetchbyActiveANdNOne($type){
+        if($type == '2'){
+            return response()->json([
+                'employees' => Employee::orderBy('id','desc')->get()
+            ]);
+        }else {
+             return response()->json([
+                'employees' => Employee::where('status', $type)->orderBy('id','desc')->get()
+            ]);     
+        }
+       
+    }
+
     public function insert(Request $request){
     	 $this->validate($request, [
             'name' => 'required|unique:users',

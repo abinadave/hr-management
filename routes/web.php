@@ -29,4 +29,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('post', 'PostController@createPost');
     Route::post('fileuploader', 'PostController@uploadFile');
     Route::get('temporary/files/blog', 'PostController@fetchTempFiles');
+    Route::get('employee/sort/by/active/{id}', 'EmployeeController@fetchbyActiveANdNOne');
 });
