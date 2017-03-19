@@ -54,7 +54,6 @@
             }
 
             .links > a {
-                color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -87,16 +86,24 @@
                     {{ config('app.name') }}
                 </div>
 
-                <div class="links">
+                <div class="links"> 
                     <a href="https://laravel.com/docs">Blog</a>
-                   <!--  <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
                 </div>
             </div>
         </div>
         </div>
         <script src="/js/app.js"></script>
     </body>
+    <style type="text/css">
+        a {
+            color: white;
+        }
+         #app {
+            background-image: url('/img/IMG20170313074647.jpg');
+            background-size:  cover;                      /* <------ */
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: white;   
+        }
+    </style>
 </html>

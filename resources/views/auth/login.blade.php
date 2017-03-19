@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="container" id="cover">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -65,4 +66,12 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+    #cover {
+            background-image: url('/img/IMG20170313074647.jpg');
+            background-size:  cover;                      /* <------ */
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+</style>
 @endsection

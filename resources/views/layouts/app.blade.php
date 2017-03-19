@@ -19,6 +19,13 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style type="text/css">
+        #app {
+            background-image: url('../images/header-shade.jpg');
+            width:100%;
+            height:100%;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

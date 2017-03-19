@@ -286,6 +286,7 @@ class ComposerStaticInit3dafdd690517ffda54940d81c32c0ea2
         'CreatePositionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_132643_create_positions_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_04_121533_create_posts_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_21_163701_create_roles_table.php',
+        'CreateSalaryGradesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_19_102103_create_salary_grades_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',

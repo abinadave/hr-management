@@ -22,13 +22,16 @@
                       </option>
                    </select>
                 </label>
+                <label>Salary Grade:
+                  <input v-model="form.salary_grade" type="number" class="form-control">
+                </label>
                  <label>Phone #:
                   <input v-model="form.phone" type="text" class="form-control">
                 </label>
-                <label>Address1:
+                <label>Current Address:
                   <input v-model="form.address1" type="text" class="form-control">
                 </label>
-                 <label>Address2:
+                 <label>Hometown:
                   <input v-model="form.address2" type="text" class="form-control">
                 </label>
                 <label>Date of Joining:
@@ -40,10 +43,10 @@
                 <label>Date of Birth:
                   <input v-model="form.dob" style="width: 180px;" type="date" class="form-control">
                 </label>
-                 <label>City:
+                 <label>City / Municipality:
                   <input v-model="form.city" type="text" class="form-control">
                 </label>
-                <label>Location:
+                <label>Location (assigned):
                   <input v-model="form.location" type="text" class="form-control">
                 </label>
                  <label>Status:
@@ -93,7 +96,8 @@
                     date_of_leaving: '',
                     status: '',
                     position: '',
-                    location: ''
+                    location: '',
+                    salary_grade: 0
                 }
             }
         },
@@ -101,7 +105,7 @@
         methods: {
             saveOfficial(){
                 let self = this;
-                console.log(self.positions.length)
+                console.log(self.positions.length);
                 self.whileSaving = true;
                 self.$http.post('/official', self.form).then((resp) => {
                     self.whileSaving = false;

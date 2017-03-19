@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function () {
+    Route::put('official', 'OfficialController@updateOfficial');
+    Route::get('salary/grade', 'SalaryGradeController@fetch');
     Route::post('/role', 'RoleController@insert');
     Route::get('employee/management', 'EmployeeController@emloyeeManagement');
     Route::post('user/employee', 'EmployeeController@insert');
