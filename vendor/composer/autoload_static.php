@@ -281,6 +281,7 @@ class ComposerStaticInit3dafdd690517ffda54940d81c32c0ea2
         'AddColumnAdminUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_21_135738_add_column_admin_users_table.php',
         'AddColumnRoleEmployeeTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_22_031624_add_column_role_employee_table.php',
         'CreateEmployeesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_21_171653_create_employees_table.php',
+        'CreateMissionVisionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_01_165538_create_mission_visions_table.php',
         'CreateOfficialsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_131456_create_officials_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePositionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_132643_create_positions_table.php',

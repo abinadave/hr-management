@@ -11,13 +11,10 @@
 |
 */
 
-// Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('gallery', function(){
-    echo "here is the gallery";
-});
 Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function () {
     Route::put('official', 'OfficialController@updateOfficial');
@@ -33,4 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('fileuploader', 'PostController@uploadFile');
     Route::get('temporary/files/blog', 'PostController@fetchTempFiles');
     Route::get('employee/sort/by/active/{id}', 'EmployeeController@fetchbyActiveANdNOne');
+    Route::post('mission/vision', 'MissionVisionController@edit');
+    
 });
+Route::get('mission/vision', 'MissionVisionController@fetch');

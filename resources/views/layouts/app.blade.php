@@ -52,6 +52,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                         <li><a href="{{ url('/gallery') }}">Babatngon Gallery</a></li>
+                        <li><a href="{{ url('/mission') }}">Mission / Vision</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

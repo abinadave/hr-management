@@ -37,6 +37,14 @@ const routes = [
 		path: '/Blog/Management',
 		component: require('./components/blog/blog.vue')
 	},
+	{
+		path: '/Mission/Vision',
+		component: require('./components/mv/mission_vision.vue')
+	},
+	{
+		path: '/guest/mission/vision',
+		component: require('./components/example.vue')
+	}
 ]
 
 window.router = new VueRouter({

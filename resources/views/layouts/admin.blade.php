@@ -47,8 +47,7 @@
                         <li><router-link :to="{ name: 'emps' }">Employee</router-link></li>
                         <li><router-link :to="{ name: 'opisyal' }">Officials</router-link></li>
                         <li><router-link :to="{ path: '/Blog/Management' }">Blog</router-link></li>
-                        <li><router-link :to="{ path: '/Mission' }">Mission</router-link></li>
-                        <li><router-link :to="{ path: '/Vision' }">Vision</router-link></li>
+                        <li><router-link :to="{ path: '/Mission/Vision' }">Mission / Vision</router-link></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
