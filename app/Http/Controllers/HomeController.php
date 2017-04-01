@@ -29,7 +29,7 @@ class HomeController extends Controller
         }elseif (Auth::user()->usertype === 'employee') {
             return view('layouts.employee');
         }else {
-            return view('/login');
+            return view('/gallery');
         }
     }
 }

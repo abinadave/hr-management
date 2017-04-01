@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+Route::get('gallery', function(){
+    echo "here is the gallery";
+});
 Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function () {
     Route::put('official', 'OfficialController@updateOfficial');
