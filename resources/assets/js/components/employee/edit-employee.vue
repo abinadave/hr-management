@@ -72,6 +72,7 @@
 
 <script>
     import accounting from 'accounting'
+    import alertify from 'alertify.js'
     export default {
         mounted() {
             console.log('Component mounted.');
@@ -88,12 +89,28 @@
             },
             salaryGrades: {
                 type: Array
+            },
+            empId: {
+                type: Number
             }
         },
         methods: {
             submitForm(){
                 let self = this;
-                console.log(self)
+                self.form.employee_id = self.empId;
+                // alert(self.form.employee_id)
+                self.$http.put('employee', self.form).then((resp) => {
+                    if (resp.status === 200) {
+                        let json = resp.body;
+                        if (json.rs_employee === true) {
+                            alertify.alert('You successfully updated the employee.');
+                            $('#modal-edit-emp').modal('hide');
+                            self.$emit('employeeupdated', self.form);
+                        }
+                    }
+                }, (resp) => {
+                    console.log(resp);
+                });
             },
             getSalGrade(emp){
                 let self = this;
@@ -121,16 +138,22 @@
                         self.form.position = role.id;
                     }
                 }
-                if (rs.length) {
-                    let user = rs[0];
-                    $.each(user, function(index, val) {
-                         self.form[index] = val;
-                    });
+                // alert('got the id: ' +self.empId);
+                // setTimeout(function(){
+                  let rsSal = _.filter(self.salaryGrades, {emp_id: self.empId});
+                  if (rs.length) {
+                      let sal = rsSal[0];
+                      self.form.salary_grade = sal.value;
+                  }
+                // }, 700);
+                
+                let rsUser = _.filter(self.users, {id: newVal.user_id});
+                if (rsUser.length) {
+                  let user = rsUser[0];
+                  $.each(user, function(index, val) {
+                      self.form[index] = val;
+                  });
                 }
-                let empId = Number(newVal.id);
-                self.salaryGrades.forEach(function(model) {
-                     console.log('current_id: ' + newVal.id + ' === ' + model.emp_id)
-                });
             }
         }
     }

@@ -32,6 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('employee/sort/by/active/{id}', 'EmployeeController@fetchbyActiveANdNOne');
     Route::post('mission/vision', 'MissionVisionController@edit');
     Route::get('salary/grade/{id}', 'SalaryGradeController@getSalary');
-    
+    Route::put('employee', 'EmployeeController@update');
 });
 Route::get('mission/vision', 'MissionVisionController@fetch');

@@ -6,9 +6,39 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User as User;
 use App\Employee as Employee;
+use App\SalaryGrade as SalaryGrade;
 
 class EmployeeController extends Controller
 {
+    public function update(Request $request){
+        $empId = $request->input('employee_id');
+        $userId = $request->input('user_id');
+        $user = User::findOrFail($userId);
+        $employee = Employee::findOrFail($empId);
+        $salGrade = SalaryGrade::where('emp_id', $empId)->update([
+            'value' => $request->input('salary_grade')
+        ]);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        if ($request->password != '') {
+            $user->password = Hash::make($request->input('password'));
+        }
+        $employee->dob = $request->input('dob');
+        $employee->city = $request->input('city');
+        $employee->phone = $request->input('phone');
+        $employee->address1 = $request->input('address1');
+        $employee->address2 = $request->input('address2');
+        $employee->date_of_joining = $request->input('date_of_joining');
+        $employee->date_of_leaving = $request->input('date_of_leaving');
+        $employee->status = $request->input('status');
+        $employee->role = $request->input('position');
+        $rsEmployee = $employee->save();
+        $rsUser = $user->save();
+        return response()->json([
+            'rs_user' => $rsUser,
+            'rs_employee' => $rsEmployee,
+        ]);
+    }
     public function fetchbyActiveANdNOne($type){
         if($type == '2'){
             return response()->json([

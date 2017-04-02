@@ -126,6 +126,7 @@
                 self.$http.post('/user/employee', self.form).then((resp) => {
                     if (resp.status === 200) {
                         let json = resp.body;
+                        json.salary_grade = self.form.salary_grade;
                         self.$emit('employeecreated', json);
                         self.clearForm();
                         self.whileSaving = false;

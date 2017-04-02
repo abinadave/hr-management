@@ -27,7 +27,7 @@
           </div>
 
         </div>
-        <edit-employee :salary-grades="salary_grades" :users="users" :positions="roles" :form="modalEmployee"></edit-employee>
+        <edit-employee @employeeupdated="updteEmployeeChild" :emp-id="currentEmpId" :salary-grades="salary_grades" :users="users" :positions="roles" :form="modalEmployee"></edit-employee>
     </div>
 </template>
 
@@ -47,10 +47,16 @@
             return {
                 employees: [], users: [], roles: [],
                 modalEmployee: {},
-                salary_grades: []
+                salary_grades: [],
+                currentEmpId: 0
             }
         },
         methods: {
+            updteEmployeeChild(empChild){
+                let self = this;
+                let rsEmps = _.filter(self.employees, {id: Number(empChild.employee_id)});
+                console.log(rsEmps);
+            },
             fetchSalaryGrades(){
                 let self = this;
                 self.$http.get('/salary/grade').then((resp) => {
@@ -62,6 +68,7 @@
             },
             showModalEmp(emp){
                 let self = this;
+                self.currentEmpId = emp.id;
                 self.modalEmployee = emp;
                 $('#modal-edit-emp').modal('show');
 
@@ -88,6 +95,11 @@
             },
             createEmp(json){
                 let self = this;
+                let sal = {
+                    emp_id: json.id,
+                    value: Number(json.salary_grade)
+                };
+                self.salary_grades.push(sal);
                 self.employees.unshift(json.employee);
                 self.users.unshift(json.user);
             },
