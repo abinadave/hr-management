@@ -59,7 +59,13 @@ class EmployeeController extends Controller
         $emp->date_of_leaving = $request->input('date_of_leaving');
         $emp->status = ($request->input('status') == 'Active') ? 1 : 0;
         $emp->role = $request->input('role');
-        $emp->save();
+        $rs = $emp->save();
+        if ($rs) {
+            $salGrade = new \App\SalaryGrade;
+            $salGrade->value = $request->input('salary_grade');
+            $salGrade->emp_id = $emp->id;
+            $salGrade->save();
+        }
         return $emp;
     }
 

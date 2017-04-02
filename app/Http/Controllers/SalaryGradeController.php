@@ -8,6 +8,10 @@ use App\SalaryGrade as SalaryGrade;
 
 class SalaryGradeController extends Controller
 {
+    public function getSalary($empId){
+        $count = SalaryGrade::where('emp_id', $empId)->count();
+        echo $count;
+    }
     public function insertSalaryGrade($empId, $sal){
     	$salGrade = new SalaryGrade;
     	$salGrade->emp_id = $empId;

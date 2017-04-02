@@ -14,9 +14,11 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Role</th>
+                    <th>Salary Grade</th>
                     <th>From</th>
                     <th>To</th>
                     <th>Status</th>
+                    <th width="1"></th>
                     <th width="1"></th>
                 </tr>
             </thead>
@@ -27,10 +29,12 @@
                     <td>{{ person.phone }}</td>
                     <td>{{ person.address1 }}</td>
                     <td>{{ getRole(person.role) }}</td>
+                    <td>{{ getSalGrade(person) }}</td>
                     <td>{{ person.date_of_joining }}</td>
                     <td>{{ person.date_of_leaving }}</td>
                     <td>{{ activeOrNot(person) }}</td>
-                    <td><a @click="removePerson(person)"><i class="fa fa-remove"></i></a></td>
+                    <td><a style="cursor: pointer" @click="editPerson(person)"><i class="fa fa-edit">edit</i></a></td>
+                    <td><a @click="removePerson(person)"><i class="fa fa-remove">delete</i></a></td>
                 </tr>
             </tbody>
         </table>
@@ -39,7 +43,8 @@
 </template>
 
 <script>
-    import _ from 'lodash'
+
+    import accounting from 'accounting'
     export default {
         props: {
             users: { 
@@ -49,6 +54,9 @@
                 type: Array 
             },
             roles: {
+                type: Array
+            },
+            salaryGrades: {
                 type: Array
             }
         },
@@ -96,6 +104,18 @@
             }
         },
         methods: {
+            getSalGrade(emp){
+                let self = this;
+                let rs = _.filter(self.salaryGrades, {emp_id: emp.id});
+                if (rs.length) {
+                    let sal = rs[0];
+                    return accounting.formatNumber(sal.value);
+                }
+            },
+            editPerson(json){
+                let self = this;
+                self.$emit('editemployee', json);
+            },
             getRole(i){
                 let self = this;
                 let rs = _.filter(self.roles, {id: Number(i)});

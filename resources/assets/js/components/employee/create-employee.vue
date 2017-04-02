@@ -29,6 +29,7 @@
                Address 1:
                <input v-model="form.address1" type="text" class="form-control address1" />
             </label>&nbsp;&nbsp;&nbsp;
+
             <label>
                Address 2:
                <input v-model="form.address2" type="text" class="form-control address2" />
@@ -47,6 +48,10 @@
                   <option>Active</option>
                   <option>Not Active</option>
                </select>
+            </label>&nbsp;&nbsp;&nbsp;
+            <label>
+               Salary Grade
+               <input v-model="form.salary_grade" type="text" class="form-control" />
             </label>&nbsp;&nbsp;&nbsp;
             <label>
                Role:
@@ -87,12 +92,16 @@
                     date_of_joining: '',
                     date_of_leaving: '',
                     status: '',
-                    role: ''
+                    role: '',
+                    salary_grade: 0
                 }
             }
         },
         props: {
             roles: {
+                type: Array
+            },
+            salaryGrades: {
                 type: Array
             }
         },

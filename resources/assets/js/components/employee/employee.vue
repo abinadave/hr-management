@@ -13,7 +13,7 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
-                <employee-list :roles="roles" :users="users" :employees="employees"></employee-list>
+                <employee-list @editemployee="showModalEmp" :salary-grades="salary_grades" :roles="roles" :users="users" :employees="employees"></employee-list>
             </div>
             <div role="tabpanel" class="tab-pane" id="profile">
                 <create-employee :roles="roles" @employeecreated="createEmp"></create-employee>
@@ -27,6 +27,7 @@
           </div>
 
         </div>
+        <edit-employee :salary-grades="salary_grades" :users="users" :positions="roles" :form="modalEmployee"></edit-employee>
     </div>
 </template>
 
@@ -35,17 +36,36 @@
     import CompCreateEmployee from './create-employee.vue'
     import CompRoleManagement from './role/role.vue'
     import CompEmpList        from './employee-list.vue'
+    import CompEditEmp        from './edit-employee.vue'
 
     export default {
         mounted() {
             this.fetchData();
+            this.fetchSalaryGrades();
         },
         data(){
             return {
-                employees: [], users: [], roles: []
+                employees: [], users: [], roles: [],
+                modalEmployee: {},
+                salary_grades: []
             }
         },
         methods: {
+            fetchSalaryGrades(){
+                let self = this;
+                self.$http.get('/salary/grade').then((resp) => {
+                    let json = resp.body;
+                    self.salary_grades = json.salary_grades;
+                }, (resp) => {
+                    console.log(resp);
+                });
+            },
+            showModalEmp(emp){
+                let self = this;
+                self.modalEmployee = emp;
+                $('#modal-edit-emp').modal('show');
+
+            },
             removeRole(index){
                 let self = this;
                 let role = self.roles[index];
@@ -93,7 +113,8 @@
         components: {
             'create-employee': CompCreateEmployee,
             'role-management': CompRoleManagement,
-            'employee-list': CompEmpList
+            'employee-list': CompEmpList,
+            'edit-employee': CompEditEmp
         }
     }
 </script>

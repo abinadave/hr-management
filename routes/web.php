@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('temporary/files/blog', 'PostController@fetchTempFiles');
     Route::get('employee/sort/by/active/{id}', 'EmployeeController@fetchbyActiveANdNOne');
     Route::post('mission/vision', 'MissionVisionController@edit');
+    Route::get('salary/grade/{id}', 'SalaryGradeController@getSalary');
     
 });
 Route::get('mission/vision', 'MissionVisionController@fetch');
